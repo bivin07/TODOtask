@@ -183,8 +183,10 @@ const HomePage = () => {
           </div>
         ) : (
           <>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-             
+            {/* Keep pagination anchored by making this area a flex column
+                with a minimum height so the buttons don't jump when item count changes */}
+            <div className="flex flex-col min-h-[24rem]">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8 flex-grow">
                 {(() => {
                   const itemsPerPage = pagination.itemsPerPage || 6;
                   const currentPage = pagination.currentPage || 1;
@@ -207,13 +209,14 @@ const HomePage = () => {
                 })()}
               </div>
 
-            <div className="flex justify-center">
-              <Pagination
-                currentPage={pagination.currentPage}
-                totalPages={pagination.totalPages}
-                onPageChange={handlePageChange}
-                alwaysShow={true}
-              />
+              <div className="flex justify-center mt-auto">
+                <Pagination
+                  currentPage={pagination.currentPage}
+                  totalPages={pagination.totalPages}
+                  onPageChange={handlePageChange}
+                  alwaysShow={true}
+                />
+              </div>
             </div>
           </>
         )}
