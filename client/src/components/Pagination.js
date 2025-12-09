@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaAngleDoubleLeft, FaAngleDoubleRight } from 'react-icons/fa';
 
-const Pagination = ({ currentPage, totalPages, onPageChange, className = '' }) => {
+const Pagination = ({ currentPage, totalPages, onPageChange, className = '', alwaysShow = false }) => {
   const pageNumbers = [];
   const maxPagesToShow = 5; 
 
@@ -17,7 +17,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange, className = '' }) =
     pageNumbers.push(i);
   }
 
-  if (totalPages <= 1) return null;
+  if (!alwaysShow && totalPages <= 1) return null;
 
   return (
     <div className={`flex items-center justify-center space-x-1 ${className}`}>

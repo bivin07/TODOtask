@@ -212,6 +212,7 @@ const HomePage = () => {
                 currentPage={pagination.currentPage}
                 totalPages={pagination.totalPages}
                 onPageChange={handlePageChange}
+                alwaysShow={true}
               />
             </div>
           </>
